@@ -1,0 +1,65 @@
+html, body {
+  height: 100%;
+  background: gainsboro;
+}
+html .container, body .container {
+  display: flex;
+  height: 100%;
+  background: #f2eada;
+  flex-direction: column;
+}
+html .container .lx-head, body .container .lx-head {
+  height: 50px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+html .container .lx-head .left a, body .container .lx-head .left a {
+  font-size: 30px;
+  font-weight: 700;
+  color: #bed742;
+  text-decoration: none;
+}
+html .container .lx-head .right, body .container .lx-head .right {
+  display: flex;
+  align-items: center;
+  width: 240px;
+  justify-content: space-between;
+}
+html .container .lx-head .right p, body .container .lx-head .right p {
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+}
+html .container .lx-foot, body .container .lx-foot {
+  height: 50px;
+  border-top: 1px solid black;
+}
+html .container .lx-main, body .container .lx-main {
+  flex: 1;
+  display: flex;
+  background: #f6f5ec;
+}
+html .container .lx-main .main-left .menu, body .container .lx-main .main-left .menu {
+  width: 240px;
+  height: 100%;
+  border-right: 1px solid #292727;
+  overflow-y: auto;
+}
+html .container .lx-main .main-left .menu a, body .container .lx-main .main-left .menu a {
+  text-decoration: none;
+  color: #8e7437;
+  height: 50px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  line-height: 50px;
+  font-size: 22px;
+  border-bottom: 1px solid black;
+}
+html .container .lx-main .main-right, body .container .lx-main .main-right {
+  flex: 1;
+}
+
+/*# sourceMappingURL=common.css.map */
