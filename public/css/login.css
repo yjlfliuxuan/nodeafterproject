@@ -1,0 +1,42 @@
+.borderbox {
+  width: 360px;
+  height: 200px;
+  margin: 160px auto;
+  border: 1px solid black;
+  background: #d1c7b7;
+}
+.borderbox h1 {
+  font-size: 30px;
+  text-align: center;
+}
+.borderbox .borderboxwei {
+  width: 255px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+}
+.borderbox .borderboxwei label {
+  font-size: 16px;
+  line-height: 30px;
+}
+.borderbox .borderboxwei .textbox {
+  width: 200px;
+  overflow: hidden;
+}
+.borderbox .borderboxwei .textbox input {
+  width: 200px;
+  height: 30px;
+}
+.borderbox .borderboxwei .subbox {
+  width: 255px;
+}
+.borderbox .borderboxwei .subbox .button {
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 75px;
+}
+
+/*# sourceMappingURL=login.css.map */
