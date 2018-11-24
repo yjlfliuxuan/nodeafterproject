@@ -1,0 +1,55 @@
+.main-right {
+  flex: 1;
+  overflow: hidden;
+  padding: 0 20px;
+}
+.main-right button {
+  margin: 60px 0 30px;
+}
+.main-right .table-hover > tbody > tr:hover {
+  background-color: #11ace9;
+}
+.main-right table {
+  border: 1px solid #bed742;
+  text-align: center;
+}
+.main-right table thead tr {
+  border: 1px solid #bed742;
+}
+.main-right table thead tr td {
+  border: 1px solid #bed742;
+}
+.main-right table thead tr th {
+  text-align: center;
+  border: 1px solid #bed742;
+}
+.main-right table tbody tr {
+  border: 1px solid #bed742;
+}
+.main-right table tbody tr td {
+  border: 1px solid #bed742;
+}
+.main-right table tbody tr td a {
+  display: inline-block;
+  height: 100%;
+  width: 50px;
+}
+.main-right table tbody tr td .red {
+  color: red;
+  text-decoration: none;
+  text-align: right;
+}
+.main-right table tbody tr td .blue {
+  color: skyblue;
+  text-decoration: none;
+  text-align: left;
+}
+.main-right table tbody tr th {
+  text-align: center;
+  border: 1px solid #bed742;
+}
+.main-right nav {
+  float: right;
+}
+
+/*# sourceMappingURL=phone.css.map */

@@ -1,0 +1,58 @@
+
+            .main-right{
+                flex: 1;
+                overflow: hidden;
+                padding: 0 20px;
+                button{
+                    margin:60px 0 30px;
+                }
+                .table-hover>tbody>tr:hover {
+                    background-color: #11ace9;
+                }
+                table{
+                    border: 1px solid #bed742;
+                    text-align: center;
+                    thead{
+                        tr{
+                            border: 1px solid #bed742;
+                            td{
+                                border: 1px solid #bed742;
+                            }
+                            th{
+                                text-align: center;
+                                border: 1px solid #bed742;
+                            }
+                        }
+                    }
+                    tbody{
+                        tr{
+                            border: 1px solid #bed742;
+                            td{
+                                border: 1px solid #bed742;
+                                a{
+                                    display: inline-block;
+                                    height: 100%;
+                                    width: 50px;
+                                }
+                                .red{
+                                    color:red;
+                                    text-decoration: none;
+                                    text-align: right;
+                                }
+                                .blue{
+                                    color:skyblue;
+                                    text-decoration: none;
+                                    text-align: left;
+                                }
+                            }
+                            th{
+                                text-align: center;
+                                border: 1px solid #bed742;
+                            }
+                        }
+                    }
+                }
+                nav{
+                    float: right;
+                }
+            }

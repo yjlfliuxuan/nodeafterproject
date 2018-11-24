@@ -35,6 +35,12 @@ html .container .lx-head .right p, body .container .lx-head .right p {
 html .container .lx-foot, body .container .lx-foot {
   height: 50px;
   border-top: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+html .container .lx-foot a, body .container .lx-foot a {
+  text-decoration: none;
 }
 html .container .lx-main, body .container .lx-main {
   flex: 1;
@@ -57,9 +63,6 @@ html .container .lx-main .main-left .menu a, body .container .lx-main .main-left
   line-height: 50px;
   font-size: 22px;
   border-bottom: 1px solid black;
-}
-html .container .lx-main .main-right, body .container .lx-main .main-right {
-  flex: 1;
 }
 
 /*# sourceMappingURL=common.css.map */
