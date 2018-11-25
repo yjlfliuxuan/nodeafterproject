@@ -1,3 +1,25 @@
-
+.form-inline {
+  width: 360px;
+  margin: 100px auto;
+  border: 1px solid black;
+}
+.form-inline .form-group {
+  margin-left: 45px;
+}
+.form-inline .manager {
+  margin-left: 45px;
+}
+.form-inline h1 {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.form-inline .button {
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 75px;
+}
 
 /*# sourceMappingURL=register.css.map */

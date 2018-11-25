@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AACA,YAAY;EACR,KAAK,EAAC,KAAK;EACX,MAAM,EAAE,UAAU;EAClB,MAAM,EAAE,eAAe;;AACvB,wBAAW;EACP,WAAW,EAAC,IAAI;;AAEpB,qBAAQ;EACJ,WAAW,EAAC,IAAI;;AAEpB,eAAE;EACE,SAAS,EAAE,IAAI;EACf,UAAU,EAAE,MAAM;EAClB,aAAa,EAAE,IAAI;;AAEvB,oBAAO;EACH,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,IAAI;EACZ,MAAM,EAAC,eAAe;EACtB,aAAa,EAAE,GAAG;EAClB,WAAW,EAAC,IAAI",
+"sources": ["../../sass/register.scss"],
 "names": [],
 "file": "register.css"
 }
