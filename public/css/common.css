@@ -47,6 +47,9 @@ html .container .lx-main, body .container .lx-main {
   display: flex;
   background: #f6f5ec;
 }
+html .container .lx-main .main-left, body .container .lx-main .main-left {
+  width: 240px;
+}
 html .container .lx-main .main-left .menu, body .container .lx-main .main-left .menu {
   width: 240px;
   height: 100%;
