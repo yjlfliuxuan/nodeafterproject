@@ -1,5 +1,7 @@
 var express = require('express');
+var async = require("async");
 var MongoClient = require("mongodb").MongoClient;
+var ObjectId=require("mongodb").ObjectId;
 var url = "mongodb://127.0.0.1:27017";
 var router = express.Router();
 
@@ -102,6 +104,129 @@ router.post("/login", function (req, res) {
             maxAge: 60 * 60 * 1000
           })
           res.redirect("/");
+        }
+        client.close();
+      })
+    }
+  })
+})
+router.post("/register", function (req, res) {
+  var uname = req.body.username;
+  var nickname = req.body.nickname;
+  var pwd = req.body.password;
+  var age = Number(req.body.age);
+  var sex = req.body.sex;
+  var isAdmin = req.body.isAdmin;
+  var phone = req.body.phone;
+  // console.log(uname,nickname,pwd,age,sex,isAdmin,phone);
+  // res.send("");
+  // MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
+  //   if (err) {
+  //     console.log("链接数据库失败", err);
+  //     res.render("error", {
+  //       message: "链接数据库失败",
+  //       error: err
+  //     })
+  //     return;
+  //   } else {
+  //     var db = client.db("nodeafterproject");
+  //     db.collection("user").insertOne({
+  //       username:uname,
+  //       nickname:nickname,
+  //       password:pwd,
+  //       age:age,
+  //       sex:sex,
+  //       isAdmin:isAdmin,
+  //       phone:phone
+  //     },function(err){
+  //       if(err){
+  //         console.log("注册失败");
+  //         res.render("error",{
+  //           message:"注册失败",
+  //           error:err
+  //         })
+  //       }else{
+  //         res.redirect("/login.html");
+  //       }
+  //       client.close();
+  //     })
+  //   }
+  // })
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
+    if (err) {
+      console.log("链接数据库失败", err);
+      res.render("error", {
+        message: "链接数据库失败",
+        error: err
+      })
+      return;
+    } else {
+      var db = client.db("nodeafterproject");
+      async.series([
+        function (cb) {
+          db.collection("user").find({ username: uname }).count(function (err, num) {
+            if (err) {
+              cb(err);
+            } else if (num > 0) {
+              cb(new Error("已经注册"))
+            } else {
+              cb(null);
+            }
+          })
+        },
+        function (cb) {
+          db.collection("user").insertOne({
+            username: uname,
+            nickname: nickname,
+            password: pwd,
+            age: age,
+            sex: sex,
+            isAdmin: isAdmin,
+            phone: phone
+          }, function (err) {
+            if (err) {
+              cb(err)
+            } else {
+              cb(null)
+            }
+          })
+        }
+      ], function (err, result) {
+        if (err) {
+          res.render("error", {
+            message: "错误",
+            error: err
+          })
+        } else {
+          res.redirect("/login.html");
+        }
+        client.close();
+      })
+    }
+  })
+})
+router.get("/delete",function(req,res){
+  var id=req.query.id;
+  MongoClient.connect(url,{useNewUrlParser:true},function(err,client){
+    if (err) {
+      console.log("链接数据库失败", err);
+      res.render("error", {
+        message: "链接数据库失败",
+        error: err
+      })
+      return;
+    }else{
+      var db = client.db("nodeafterproject");
+      db.collection("user").deleteOne({
+        _id:ObjectId(id)
+      },function(err){
+        if(err){
+          res.render("error",{
+            message:"删除失败",
+            error:err
+          })
+        }else{
+          res.redirect("/users");
         }
         client.close();
       })

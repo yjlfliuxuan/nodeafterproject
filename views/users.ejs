@@ -37,8 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0;i<list.length;i++){ %>
-                        <%if(list[i].isAdmin=="是"){%>
+                        <% for(var i=0;i<list.length;i++){ %>   
                         <tr>
                             <th scope="row">
                                 <%= i+1 %>
@@ -61,34 +60,12 @@
                             <td>
                                 <%= list[i].isAdmin%>
                             </td>
+                            <%if(list[i].isAdmin=="是"){%>
                             <td><a href="" class="blue">修改</a><a href="" class="red"></a></td>
+                            <%}else{%>
+                            <td><a href="" class="blue">修改</a><a href="/users/delete?id=<%=list[i]._id%>" class="red">删除</a></td>
+                            <%}%>
                         </tr>
-                        <%}else{%>
-                        <tr>
-                            <th scope="row">
-                                <%= i+1 %>
-                            </th>
-                            <td>
-                                <%= list[i].username%>
-                            </td>
-                            <td>
-                                <%= list[i].nickname%>
-                            </td>
-                            <td>
-                                <%= list[i].phone%>
-                            </td>
-                            <td>
-                                <%= list[i].sex%>
-                            </td>
-                            <td>
-                                <%= list[i].age%>
-                            </td>
-                            <td>
-                                <%= list[i].isAdmin%>
-                            </td>
-                            <td><a href="" class="blue">修改</a><a href="" class="red">删除</a></td>
-                        </tr>
-                        <% } %>
                         <%}%>
                     </tbody>
                 </table>
