@@ -5,9 +5,9 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get("/users.html",function(req,res){
-  res.render("users");
-})
+// router.get("/users.html",function(req,res){
+//   res.render("users");
+// })
 router.get("/brand.html",function(req,res){
   res.render("brand");
 })

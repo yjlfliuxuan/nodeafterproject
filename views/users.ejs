@@ -37,56 +37,59 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <% for(var i=0;i<list.length;i++){ %>
+                        <%if(list[i].isAdmin=="是"){%>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">
+                                <%= i+1 %>
+                            </th>
+                            <td>
+                                <%= list[i].username%>
+                            </td>
+                            <td>
+                                <%= list[i].nickname%>
+                            </td>
+                            <td>
+                                <%= list[i].phone%>
+                            </td>
+                            <td>
+                                <%= list[i].sex%>
+                            </td>
+                            <td>
+                                <%= list[i].age%>
+                            </td>
+                            <td>
+                                <%= list[i].isAdmin%>
+                            </td>
                             <td><a href="" class="blue">修改</a><a href="" class="red"></a></td>
                         </tr>
+                        <%}else{%>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            <th scope="row">
+                                <%= i+1 %>
+                            </th>
+                            <td>
+                                <%= list[i].username%>
+                            </td>
+                            <td>
+                                <%= list[i].nickname%>
+                            </td>
+                            <td>
+                                <%= list[i].phone%>
+                            </td>
+                            <td>
+                                <%= list[i].sex%>
+                            </td>
+                            <td>
+                                <%= list[i].age%>
+                            </td>
+                            <td>
+                                <%= list[i].isAdmin%>
+                            </td>
                             <td><a href="" class="blue">修改</a><a href="" class="red">删除</a></td>
                         </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td><a href="" class="blue">修改</a><a href="" class="red">删除</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td><a href="" class="blue">修改</a><a href="" class="red">删除</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td><a href="" class="blue">修改</a><a href="" class="red">删除</a></td>
-                        </tr>
+                        <% } %>
+                        <%}%>
                     </tbody>
                 </table>
                 <nav aria-label="Page navigation">
