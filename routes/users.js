@@ -136,10 +136,10 @@ router.post("/login", function (req, res) {
       //       }
       //       client.close();
       //     })
-      db.collection("user").find({
+      db.collection("user").find({//通过用户输入的用户名和密码在数据库中查找信息
         username: uname,
         password: pwd
-      }).toArray(function (err, data) {
+      }).toArray(function (err, data) {//data是一个数组
         if (err) {
           console.log("查询失败", err);
           res.render("error", {
@@ -152,6 +152,7 @@ router.post("/login", function (req, res) {
             error: new Error("登录失败")
           })
         } else {
+          //登录成功将信息存入cookie
           res.cookie("nickname", data[0].nickname, {
             //过期时间
             maxAge: 60 * 60 * 1000
@@ -280,6 +281,38 @@ router.get("/delete", function (req, res) {
           })
         } else {
           res.redirect("/users");
+        }
+        client.close();
+      })
+    }
+  })
+})
+router.get("/search",function(req,res){
+  var str=req.query.search;
+  console.log(str);
+  var search=new RegExp(str);
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
+    if (err) {
+      console.log("链接数据库失败", err);
+      res.render("error", {
+        message: "链接数据库失败",
+        error: err
+      })
+      return;
+    } else {
+      var db = client.db("nodeafterproject");
+      db.collection("user").find({
+         nickname:search
+      }).toArray(function(err,data){
+        if(err){
+          res.render("error",{
+            message:"查询失败",
+            error:err
+          })
+        }else{
+          res.render("search",{
+            list:data
+          })
         }
         client.close();
       })

@@ -1,0 +1,47 @@
+
+                <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>用户名</th>
+                                <th>用户昵称</th>
+                                <th>手机号码</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>是否管理员</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0;i<list.length;i++){ %>   
+                            <tr>
+                                <th scope="row">
+                                    <%= i+1 %>
+                                </th>
+                                <td>
+                                    <%= list[i].username%>
+                                </td>
+                                <td>
+                                    <%= list[i].nickname%>
+                                </td>
+                                <td>
+                                    <%= list[i].phone%>
+                                </td>
+                                <td>
+                                    <%= list[i].sex%>
+                                </td>
+                                <td>
+                                    <%= list[i].age%>
+                                </td>
+                                <td>
+                                    <%= list[i].isAdmin%>
+                                </td>
+                                <%if(list[i].isAdmin=="是"){%>
+                                <td><a href="" class="blue">修改</a><a href="" class="red"></a></td>
+                                <%}else{%>
+                                <td><a href="" class="blue">修改</a><a href="/users/delete?id=<%=list[i]._id%>" class="red">删除</a></td>
+                                <%}%>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
