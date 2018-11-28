@@ -19,12 +19,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//如果是忽略的路由，进来后，该跳到哪就到哪
 app.use(function (req, res, next) {
   if(ignoreRouter.indexOf(req.url)>-1){
     next();
     return;
   }
+  //除了注册登录页，其他的必须是登录后才可以进
   var nickname = req.cookies.nickname;
   if (nickname) {
     next();
