@@ -1,5 +1,6 @@
 var express = require('express');
 var async = require("async");
+var qs=require("querystring");
 var MongoClient = require("mongodb").MongoClient;
 var ObjectId = require("mongodb").ObjectId;
 var url = "mongodb://127.0.0.1:27017";
@@ -153,11 +154,16 @@ router.post("/login", function (req, res) {
           })
         } else {
           //登录成功将信息存入cookie
-          res.cookie("nickname", data[0].nickname, {
+          var obj={
+            nickname:data[0].nickname,
+            username:data[0].username
+          }
+          var newobj=qs.stringify(obj);
+          res.cookie("nickname", newobj, {
             //过期时间
-            maxAge: 60 * 60 * 1000
+            maxAge: 20 * 60 * 1000
           })
-          res.redirect("/");
+          res.redirect("/");         
         }
         client.close();
       })
