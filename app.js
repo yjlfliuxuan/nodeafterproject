@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var phoneRouter = require('./routes/phone');
 var brandRouter = require('./routes/brand');
+var searchRouter = require('./routes/search');
 var phoneRouter1 = require('./routes/phonenoadmin');
 var brandRouter1 = require('./routes/brandnoadmin');
 var app = express();
@@ -40,6 +41,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/phone', phoneRouter);
 app.use('/brand', brandRouter);
+app.use('/search', searchRouter);
 app.use('/phonenoadmin', phoneRouter1);
 app.use('/brandnoadmin', brandRouter1);
 // catch 404 and forward to error handler

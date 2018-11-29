@@ -13,6 +13,13 @@ router.get('/', function(req, res, next) {
     res.render('index', obj);
   }
 });
+router.get('/exit', function(req, res, next) {
+  res.cookie("nickname", "", {
+    //过期时间
+    maxAge: 0
+  })
+   res.redirect("/");
+});
 // router.get("/users.html",function(req,res){
 //   res.render("users");
 // })
