@@ -36,7 +36,7 @@
             <div class="main-right">
                 <div class="alert_p">
                     <form class="form-inline" action="/brandnoadmin/addbrand" method="POST" enctype="multipart/form-data">
-                        <h1>新增品牌</h1>
+                        <h1>新增或修改品牌</h1>
                         <div class="form-group">
                             <label for="brandname">手机品牌：</label>
                             <input type="text" class="form-control" name="brandname" id="brandname" placeholder="请输入手机品牌">
@@ -71,7 +71,7 @@
                             <td>
                                 <%= list[i].brandname%>
                             </td>
-                            <td><a href="" class="blue">修改</a><a href="/brandnoadmin/delete?id=<%=list[i]._id%>" class="red">删除</a></td>
+                            <td><a href="javascript:void(0)" class="blue">修改</a><a href="/brandnoadmin/delete?id=<%=list[i]._id%>" class="red">删除</a></td>
                         </tr>
                         <%}%>
                     </tbody>
@@ -112,5 +112,8 @@
        $(".cancel").click(function(){
           $(".alert_p").hide();
        })
+       $(".blue").click(function () {
+      $(".alert_p").show();
+    })
     })
 </script>
