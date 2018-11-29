@@ -24,7 +24,7 @@ html .container .lx-head .left a, body .container .lx-head .left a {
 html .container .lx-head .right, body .container .lx-head .right {
   display: flex;
   align-items: center;
-  width: 240px;
+  width: 260px;
   justify-content: space-between;
 }
 html .container .lx-head .right p, body .container .lx-head .right p {

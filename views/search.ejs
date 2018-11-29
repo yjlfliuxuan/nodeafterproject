@@ -14,7 +14,17 @@
 
 <body>
     <div class="container">
-        <%-include("./public/head.ejs")%>
+        <div class="lx-head">
+            <div class="left">
+                <a href="/" class="logo">xxx后台管理系统</a>
+            </div>
+            <div class="right">
+                <p>欢迎您--<span>
+                        <%=nickname%></span>--(<span>
+                        <%=nickname%></span>)</p>
+                <a class="btn btn-primary" href="">退出</a>
+            </div>
+        </div>
         <div class="lx-main">
             <%-include("./public/mainleft.ejs")%>
             <div class="main-right">
@@ -32,7 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0;i<list.length;i++){ %>   
+                        <% for(var i=0;i<list.length;i++){ %>
                         <tr>
                             <th scope="row">
                                 <%= i+1 %>

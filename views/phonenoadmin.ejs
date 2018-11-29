@@ -14,23 +14,25 @@
 
 <body>
   <div class="container">
-      <div class="lx-head">
-          <div class="left">
-             <a href="/" class="logo">xxx后台管理系统</a>
-          </div>
-          <div class="right">
-              <p>欢迎您--<span><%=nickname%></span>--(<span><%=nickname%></span>)</p>
-              <button class="btn btn-primary">退出</button>
-          </div>
+    <div class="lx-head">
+      <div class="left">
+        <a href="/" class="logo">xxx后台管理系统</a>
       </div>
+      <div class="right">
+        <p>欢迎您--<span>
+            <%=nickname%></span>--(<span>
+            <%=nickname%></span>)</p>
+        <a class="btn btn-primary" href="">退出</a>
+      </div>
+    </div>
     <div class="lx-main">
-        <div class="main-left">
-            <ul class="menu">
-                <!-- <li><a href="/users">用户管理</a></li> -->
-                <li><a href="/brandnoadmin">品牌管理</a></li>
-                <li><a href="/phonenoadmin">手机管理</a></li>
-            </ul>
-        </div>
+      <div class="main-left">
+        <ul class="menu">
+          <!-- <li><a href="/users">用户管理</a></li> -->
+          <li><a href="/brandnoadmin">品牌管理</a></li>
+          <li><a href="/phonenoadmin">手机管理</a></li>
+        </ul>
+      </div>
       <div class="main-right">
         <button type="submit" class="btn btn-primary">新增手机</button>
 
@@ -47,14 +49,24 @@
             </tr>
           </thead>
           <tbody>
-             <% for(var i=0;i<list.length;i++){ %>
+            <% for(var i=0;i<list.length;i++){ %>
             <tr>
-              <th scope="row"><%= i+1 %></th>
+              <th scope="row">
+                <%= i+1 %>
+              </th>
               <td><img src="/images/<%= list[i].pic%>" width="150"></td>
-              <td><%= list[i].phonename%></td>
-              <td><%= list[i].brand%></td>
-              <td><%= list[i].Officialprice%></td>
-              <td><%= list[i].recyclingprice%></td>
+              <td>
+                <%= list[i].phonename%>
+              </td>
+              <td>
+                <%= list[i].brand%>
+              </td>
+              <td>
+                <%= list[i].Officialprice%>
+              </td>
+              <td>
+                <%= list[i].recyclingprice%>
+              </td>
               <td><a href="" class="blue">修改</a><a href="/phonenoadmin/delete?id=<%=list[i]._id%>" class="red">删除</a></td>
             </tr>
             <%}%>
@@ -63,15 +75,18 @@
         <nav aria-label="Page navigation">
           <ul class="pagination">
             <li>
-              <a href="/phonenoadmin?page=<%= currentPage - 1 < 1 ? 1: currentPage - 1 %>&pageSize=<%= pageSize %>" aria-label="Previous">
+              <a href="/phonenoadmin?page=<%= currentPage - 1 < 1 ? 1: currentPage - 1 %>&pageSize=<%= pageSize %>"
+                aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
             <% for (var i = 0; i < totalPage; i++) {%>
-            <li class="<%= currentPage === (i+1) ? 'active': '' %>"><a href="/phonenoadmin?page=<%= i+1 %>&pageSize=<%= pageSize %>"><%= i + 1%></a></li>
+            <li class="<%= currentPage === (i+1) ? 'active': '' %>"><a href="/phonenoadmin?page=<%= i+1 %>&pageSize=<%= pageSize %>">
+                <%= i + 1%></a></li>
             <%}%>
             <li>
-              <a href="/phonenoadmin?page=<%= currentPage + 1 > totalPage ? totalPage: currentPage + 1 %>&pageSize=<%= pageSize %>" aria-label="Next">
+              <a href="/phonenoadmin?page=<%= currentPage + 1 > totalPage ? totalPage: currentPage + 1 %>&pageSize=<%= pageSize %>"
+                aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>
             </li>

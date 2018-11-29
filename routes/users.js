@@ -296,6 +296,7 @@ router.get("/delete", function (req, res) {
   })
 })
 router.get("/search", function (req, res) {
+  var nickname=req.cookies.nickname;
   var str = req.query.search;
   console.log(str);
   var search = new RegExp(str);
@@ -319,6 +320,7 @@ router.get("/search", function (req, res) {
           })
         } else {
           res.render("search", {
+            nickname:nickname,
             list: data
           })
         }
