@@ -140,4 +140,43 @@ router.post("/addbrand",upload.single("brandlogo"),function(req,res){
       })
    }
 })
+ //修改品牌
+ router.post("/updatebrand",upload.single("brandlogo"),function(req,res){
+    var id = req.body._id;
+    var filename="images/"+new Date().getTime()+"_"+req.file.originalname;
+    var newfilename=path.resolve(__dirname,"../public/",filename);
+   try {
+       var data=fs.readFileSync(req.file.path);
+       fs.writeFileSync(newfilename,data);
+       MongoClient.connect(url,{useNewUrlParser:true},function(err,client){
+           if(err){
+               res.render("error",{
+                   message:"链接数据库失败",
+                   error:err
+               })
+           }else{
+            var db = client.db("nodeafterproject");
+            db.collection("brand").update({_id: ObjectId(id)},{
+                brandname:req.body.brandname,
+                brandlogo:filename
+            },function(err){
+                if(err){
+                    res.render("error",{
+                        message:"修改数据失败",
+                        error:err
+                    })
+                }else{
+                    res.send("修改品牌成功");
+                } 
+                client.close();
+            })
+           }
+       })
+   } catch (error) {
+      res.render("error",{
+          message:"修改品牌失败",
+          error:err
+      })
+   }
+})
 module.exports = router;

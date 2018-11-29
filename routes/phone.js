@@ -145,4 +145,49 @@ router.post("/addPhone",upload.single("pic"),function(req,res){
       })
    }
 })
+
+
+//修改手机
+router.post("/updatePhone",upload.single("pic"),function(req,res){
+    var id = req.body._id;
+    var filename="images/"+new Date().getTime()+"_"+req.file.originalname;
+    var newfilename=path.resolve(__dirname,"../public/",filename);
+   try {
+       var data=fs.readFileSync(req.file.path);
+       fs.writeFileSync(newfilename,data);
+       MongoClient.connect(url,{useNewUrlParser:true},function(err,client){
+           if(err){
+               res.render("error",{
+                   message:"链接数据库失败",
+                   error:err
+               })
+           }else{
+            var db = client.db("nodeafterproject");
+            db.collection("phone").update({ _id: ObjectId(id)
+               },{
+                pic:filename,
+                phonename:req.body.phonename,
+                brand:req.body.brand,
+                Officialprice:req.body.Officialprice,
+                recyclingprice:req.body.recyclingprice
+            },function(err){
+                if(err){
+                    res.render("error",{
+                        message:"修改数据失败",
+                        error:err
+                    })
+                }else{
+                    res.send("修改手机数据成功");
+                } 
+                client.close();
+            })
+           }
+       })
+    } catch (error) {
+        res.render("error",{
+            message:"修改手机数据失败",
+            error:err
+        })
+     }
+})
 module.exports = router;

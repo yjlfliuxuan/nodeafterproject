@@ -30,7 +30,7 @@
       <div class="main-right">
         <div class="alert_p">
           <form class="form-inline" action="/phone/addPhone" method="POST" enctype="multipart/form-data">
-            <h1>新增或修改手机</h1>
+            <h1>新增手机</h1>
             <div class="form-group">
               <label for="phonename">手机名称：</label>
               <input type="text" class="form-control" name="phonename" id="phonename" placeholder="请输入手机名称">
@@ -38,7 +38,7 @@
             <br>
             <div class="form-group">
               <label>手机品牌:</label>
-              <select class="phonebrand"  name="brand">
+              <select class="phonebrand" name="brand">
                 <option value="苹果">苹果</option>
                 <option value="小米">小米</option>
                 <option value="三星">三星</option>
@@ -106,6 +106,46 @@
             <%}%>
           </tbody>
         </table>
+        <div class="update_p">
+          <form class="form-inline" action="/phone/updatePhone" method="POST" enctype="multipart/form-data">
+            <h1>修改手机</h1>
+            <div class="form-group">
+              <label for="phonename">手机名称：</label>
+              <input type="text" class="form-control" name="phonename" id="phonename" placeholder="请输入手机名称">
+            </div>
+            <br>
+            <div class="form-group">
+              <label>手机品牌:</label>
+              <select class="phonebrand" name="brand">
+                <option value="苹果">苹果</option>
+                <option value="小米">小米</option>
+                <option value="三星">三星</option>
+                <option value="华为">华为</option>
+                <option value="魅族">魅族</option>
+                <option value="oppo">oppo</option>
+                <option value="vivo">vivo</option>
+              </select>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="Officialprice">官方指导价</label>
+              <input type="text" class="form-control" name="Officialprice" id="Officialprice" placeholder="请输入指导价">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="recyclingprice">二手回收价</label>
+              <input type="text" class="form-control" name="recyclingprice" id="recyclingprice" placeholder="请输入回收价">
+            </div>
+            <br>
+            <div class="form-group">
+              <label>手机图片：<label>
+                  <br>
+                  <input type="file" name="pic" id="file">
+            </div>
+            &emsp;&emsp;&emsp;&emsp;<button type="submit" class="btn btn-default">确认</button>
+            &emsp;&emsp;&emsp;&emsp;<button type="button" class="btn  cancel1 btn-default">取消</button>
+          </form>
+        </div>
         <nav aria-label="Page navigation">
           <ul class="pagination">
             <li>
@@ -141,8 +181,11 @@
     $(".cancel").click(function () {
       $(".alert_p").hide();
     })
+    $(".cancel1").click(function () {
+      $(".update_p").hide();
+    })
     $(".blue").click(function () {
-      $(".alert_p").show();
+      $(".update_p").show();
     })
   })
 </script>
