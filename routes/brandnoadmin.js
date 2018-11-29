@@ -1,8 +1,11 @@
 var express = require('express');
 var async = require("async");
-var qs = require("querystring");
+var path = require("path");
+var fs=require("fs");
 var MongoClient = require("mongodb").MongoClient;
 var ObjectId = require("mongodb").ObjectId;
+var multer=require("multer");
+var upload=multer({dest:"C:tmp"});
 var url = "mongodb://127.0.0.1:27017";
 var router = express.Router();
 /* GET users listing.  localhost:3000/brandnoadmin */
@@ -99,4 +102,42 @@ router.get('/exit', function(req, res, next) {
     })
      res.redirect("/");
   });
+     //新增品牌
+router.post("/addbrand",upload.single("brandlogo"),function(req,res){
+    var filename="images/"+new Date().getTime()+"_"+req.file.originalname;
+    var newfilename=path.resolve(__dirname,"../public/",filename);
+   try {
+       var data=fs.readFileSync(req.file.path);
+       fs.writeFileSync(newfilename,data);
+       MongoClient.connect(url,{useNewUrlParser:true},function(err,client){
+           if(err){
+               res.render("error",{
+                   message:"链接数据库失败",
+                   error:err
+               })
+           }else{
+            var db = client.db("nodeafterproject");
+            db.collection("brand").insertOne({
+                brandname:req.body.brandname,
+                brandlogo:filename
+            },function(err){
+                if(err){
+                    res.render("error",{
+                        message:"插入数据失败",
+                        error:err
+                    })
+                }else{
+                    res.send("新增品牌成功");
+                } 
+                client.close();
+            })
+           }
+       })
+   } catch (error) {
+      res.render("error",{
+          message:"新增品牌失败",
+          error:err
+      })
+   }
+})
 module.exports = router;

@@ -1,60 +1,83 @@
 
-            .main-right{
-                flex: 1;
-                overflow: hidden;
-                padding: 0 20px;
-                button{
-                    margin:60px 0 30px;
-                }
-                .table-hover>tbody>tr:hover {
-                    background-color: #11ace9;
-                }
-                table{
+.main-right{
+    flex: 1;
+    overflow: hidden;
+    padding: 0 20px;
+    position: relative;
+    .alert_p{
+        display: none;
+        width: 380px;
+        height: 300px;
+        position: absolute;
+        left: 240px;
+        top:120px;
+        border:1px solid black;
+        background:white;
+        padding:30px 0 0 30px;
+        form{
+            h1{
+                font-size: 26px;
+                text-align: center;
+                font-weight: 700;
+            }
+            .form-group{
+                margin-top: 15px;
+            }
+        }
+    }
+    button{
+        margin:60px 0 30px;
+    }
+    .table-hover>tbody>tr:hover {
+        background-color: #11ace9;
+    }
+    table{
+        border: 1px solid #bed742;
+        text-align: center;
+        thead{
+            tr{
+                border: 1px solid #bed742;
+                td{
                     border: 1px solid #bed742;
-                    text-align: center;
-                    thead{
-                        tr{
-                            border: 1px solid #bed742;
-                            td{
-                                border: 1px solid #bed742;
-                            }
-                            th{
-                                text-align: center;
-                                border: 1px solid #bed742;
-                            }
-                        }
-                    }
-                    tbody{
-                        tr{
-                            border: 1px solid #bed742;
-                            td{
-                                vertical-align: middle;
-                                border: 1px solid #bed742;
-                                a{
-                                    display: inline-block;
-                                    height: 100%;
-                                    width: 50px;
-                                }
-                                .red{
-                                    color:red;
-                                    text-decoration: none;
-                                    text-align: right;
-                                }
-                                .blue{
-                                    color:skyblue;
-                                    text-decoration: none;
-                                    text-align: left;
-                                }
-                            }
-                            th{
-                                text-align: center;
-                                border: 1px solid #bed742;
-                                vertical-align: middle;
-                            }
-                        }
-                    }
                 }
-                nav{
-                    float: right;
+                th{
+                    text-align: center;
+                    border: 1px solid #bed742;
                 }
             }
+        }
+        tbody{
+            tr{
+                border: 1px solid #bed742;
+                td{
+                    vertical-align: middle;
+                    border: 1px solid #bed742;
+                    a{
+                        display: inline-block;
+                        height: 100%;
+                        width: 50px;
+                    }
+                    .red{
+                        color:red;
+                        text-decoration: none;
+                        text-align: right;
+                    }
+                    .blue{
+                        color:skyblue;
+                        text-decoration: none;
+                        text-align: left;
+                    }
+                }
+                th{
+                    text-align: center;
+                    border: 1px solid #bed742;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    nav{
+        float: right;
+    }
+    
+}

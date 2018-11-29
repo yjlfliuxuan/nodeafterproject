@@ -2,6 +2,26 @@
   flex: 1;
   overflow: hidden;
   padding: 0 20px;
+  position: relative;
+}
+.main-right .alert_p {
+  display: none;
+  width: 380px;
+  height: 300px;
+  position: absolute;
+  left: 240px;
+  top: 120px;
+  border: 1px solid black;
+  background: white;
+  padding: 30px 0 0 30px;
+}
+.main-right .alert_p form h1 {
+  font-size: 26px;
+  text-align: center;
+  font-weight: 700;
+}
+.main-right .alert_p form .form-group {
+  margin-top: 15px;
 }
 .main-right button {
   margin: 60px 0 30px;
