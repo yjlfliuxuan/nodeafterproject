@@ -15,8 +15,10 @@
                     thead{
                         tr{
                             border: 1px solid #bed742;
+
                             td{
                                 border: 1px solid #bed742;
+
                             }
                             th{
                                 text-align: center;
@@ -29,6 +31,7 @@
                             border: 1px solid #bed742;
                             td{
                                 border: 1px solid #bed742;
+                                vertical-align: middle;
                                 a{
                                     display: inline-block;
                                     height: 100%;
@@ -46,6 +49,7 @@
                                 }
                             }
                             th{
+                                vertical-align: middle;
                                 text-align: center;
                                 border: 1px solid #bed742;
                             }

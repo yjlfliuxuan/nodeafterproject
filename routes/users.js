@@ -1,6 +1,6 @@
 var express = require('express');
 var async = require("async");
-var qs=require("querystring");
+var qs = require("querystring");
 var MongoClient = require("mongodb").MongoClient;
 var ObjectId = require("mongodb").ObjectId;
 var url = "mongodb://127.0.0.1:27017";
@@ -11,6 +11,7 @@ router.get('/', function (req, res, next) {
   var page = Number(req.query.page) || 1; //页码
   var pageSize = Number(req.query.pageSize) || 5; //每页显示条数
   var totalSize = 0; //总的条数
+  var nickname = req.cookies.nickname;
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
     if (err) {
       console.log("链接数据库失败", err);
@@ -27,39 +28,40 @@ router.get('/', function (req, res, next) {
             if (err) {
               cb(err);
             } else {
-              totalSize=num;
+              totalSize = num;
               cb(null);
             }
           })
         },
         function (cb) {
           db.collection("user").find().limit(pageSize).skip(page * pageSize - pageSize).toArray(
-            function(err,data){
-              if(err){
+            function (err, data) {
+              if (err) {
                 cb(err);
-              }else{
-                cb(null,data);
+              } else {
+                cb(null, data);
               }
             }
           )
         }
       ], function (err, result) {
-            if(err){
-              res.render("error",{
-                message:"错误",
-                error:err
-              })
-            }else{
-              var totalPage = Math.ceil(totalSize / pageSize); // 总页数
-              res.render("users",{ //result:  [undefined,data]
-                list:result[1],
-                totalPage: totalPage,
-                pageSize: pageSize,
-                currentPage: page
-              })
-            } 
-            client.close();  
-      }) 
+        if (err) {
+          res.render("error", {
+            message: "错误",
+            error: err
+          })
+        } else {
+          var totalPage = Math.ceil(totalSize / pageSize); // 总页数
+          res.render("users", { //result:  [undefined,data]
+            list: result[1],
+            nickname:nickname,
+            totalPage: totalPage,
+            pageSize: pageSize,
+            currentPage: page
+          })
+        }
+        client.close();
+      })
     }
   })
   // MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
@@ -154,16 +156,16 @@ router.post("/login", function (req, res) {
           })
         } else {
           //登录成功将信息存入cookie
-          var obj={
-            nickname:data[0].nickname,
-            username:data[0].username
-          }
-          var newobj=qs.stringify(obj);
-          res.cookie("nickname", newobj, {
+          // var obj={
+          //   nickname:data[0].nickname,
+          //   username:data[0].username
+          // }
+          // var newobj=qs.stringify(obj);
+          res.cookie("nickname", data[0].nickname, {
             //过期时间
             maxAge: 20 * 60 * 1000
           })
-          res.redirect("/");         
+          res.redirect("/");
         }
         client.close();
       })
@@ -293,10 +295,10 @@ router.get("/delete", function (req, res) {
     }
   })
 })
-router.get("/search",function(req,res){
-  var str=req.query.search;
+router.get("/search", function (req, res) {
+  var str = req.query.search;
   console.log(str);
-  var search=new RegExp(str);
+  var search = new RegExp(str);
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
     if (err) {
       console.log("链接数据库失败", err);
@@ -308,16 +310,16 @@ router.get("/search",function(req,res){
     } else {
       var db = client.db("nodeafterproject");
       db.collection("user").find({
-         nickname:search
-      }).toArray(function(err,data){
-        if(err){
-          res.render("error",{
-            message:"查询失败",
-            error:err
+        nickname: search
+      }).toArray(function (err, data) {
+        if (err) {
+          res.render("error", {
+            message: "查询失败",
+            error: err
           })
-        }else{
-          res.render("search",{
-            list:data
+        } else {
+          res.render("search", {
+            list: data
           })
         }
         client.close();

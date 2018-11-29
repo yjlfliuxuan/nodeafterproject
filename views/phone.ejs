@@ -14,7 +14,15 @@
 
 <body>
   <div class="container">
-    <%-include("./public/head.ejs")%>
+      <div class="lx-head">
+          <div class="left">
+             <a href="/" class="logo">xxx后台管理系统</a>
+          </div>
+          <div class="right">
+              <p>欢迎您--<span><%=nickname%></span>--(<span><%=nickname%></span>)</p>
+              <button class="btn btn-primary">退出</button>
+          </div>
+      </div>
     <div class="lx-main">
       <%-include("./public/mainleft.ejs")%>
       <div class="main-right">
@@ -33,40 +41,31 @@
             </tr>
           </thead>
           <tbody>
+             <% for(var i=0;i<list.length;i++){ %>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td><a href="" class="blue">修改</a><a href="" class="red">删除</a></td>
+              <th scope="row"><%= i+1 %></th>
+              <td><img src="/images/<%= list[i].pic%>" width="150"></td>
+              <td><%= list[i].phonename%></td>
+              <td><%= list[i].brand%></td>
+              <td><%= list[i].Officialprice%></td>
+              <td><%= list[i].recyclingprice%></td>
+              <td><a href="" class="blue">修改</a><a href="/phone/delete?id=<%=list[i]._id%>" class="red">删除</a></td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td><a href="" class="blue">修改</a><a href="" class="red">删除</a></td>
-            </tr>
+            <%}%>
           </tbody>
         </table>
         <nav aria-label="Page navigation">
           <ul class="pagination">
             <li>
-              <a href="#" aria-label="Previous">
+              <a href="/phone?page=<%= currentPage - 1 < 1 ? 1: currentPage - 1 %>&pageSize=<%= pageSize %>" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+            <% for (var i = 0; i < totalPage; i++) {%>
+            <li class="<%= currentPage === (i+1) ? 'active': '' %>"><a href="/phone?page=<%= i+1 %>&pageSize=<%= pageSize %>"><%= i + 1%></a></li>
+            <%}%>
             <li>
-              <a href="#" aria-label="Next">
+              <a href="/phone?page=<%= currentPage + 1 > totalPage ? totalPage: currentPage + 1 %>&pageSize=<%= pageSize %>" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>
             </li>

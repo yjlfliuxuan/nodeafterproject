@@ -27,6 +27,7 @@
   border: 1px solid #bed742;
 }
 .main-right table tbody tr td {
+  vertical-align: middle;
   border: 1px solid #bed742;
 }
 .main-right table tbody tr td a {
@@ -47,6 +48,7 @@
 .main-right table tbody tr th {
   text-align: center;
   border: 1px solid #bed742;
+  vertical-align: middle;
 }
 .main-right nav {
   float: right;
