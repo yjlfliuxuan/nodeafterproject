@@ -7,7 +7,11 @@ router.get('/', function(req, res, next) {
   var obj={
     nickname:nickname
   }
-  res.render('index', obj);
+  if(nickname!="管理员"){
+    res.render('indexnoadmin', obj);
+  }else{
+    res.render('index', obj);
+  }
 });
 // router.get("/users.html",function(req,res){
 //   res.render("users");

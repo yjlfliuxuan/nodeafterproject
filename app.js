@@ -9,6 +9,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var phoneRouter = require('./routes/phone');
 var brandRouter = require('./routes/brand');
+var phoneRouter1 = require('./routes/phonenoadmin');
+var brandRouter1 = require('./routes/brandnoadmin');
 var app = express();
 
 // view engine setup
@@ -38,6 +40,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/phone', phoneRouter);
 app.use('/brand', brandRouter);
+app.use('/phonenoadmin', phoneRouter1);
+app.use('/brandnoadmin', brandRouter1);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
