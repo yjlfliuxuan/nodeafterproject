@@ -61,8 +61,8 @@
               <th scope="row">
                 <%= i+1 %>
               </th>
-              <td><img src="/<%= list[i].brandlogo %>" width="150"></td>
-              <td>
+              <td><img class="imgjq" src="/<%= list[i].brandlogo %>" width="150"></td>
+              <td class="brandjq">
                 <%= list[i].brandname%>
               </td>
               <td><a href="javascript:void(0)" class="blue">修改</a><a href="/brand/delete?id=<%=list[i]._id%>" class="red">删除</a></td>
@@ -125,6 +125,8 @@
     })
     $(".blue").click(function () {
       $(".update_p").show();
+      // $("#brandname").val($(".brandjq").html());
+      // $("#file").html($(".imgjq").attr("src"));
     })
   })
 </script>

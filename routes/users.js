@@ -151,8 +151,8 @@ router.post("/login", function (req, res) {
           })
         } else if (data.length <= 0) {
           res.render("error", {
-            message: "登录失败",
-            error: new Error("登录失败")
+            message: "登录失败,密码或用户名错误",
+            error: new Error("登录失败，密码或用户名错误")
           })
         } else {
           //登录成功将信息存入cookie
@@ -225,7 +225,7 @@ router.post("/register", function (req, res) {
     } else {
       var db = client.db("nodeafterproject");
       async.series([
-        function (cb) {
+        function (cb) {//用户名唯一检测
           db.collection("user").find({ username: uname }).count(function (err, num) {
             if (err) {
               cb(err);

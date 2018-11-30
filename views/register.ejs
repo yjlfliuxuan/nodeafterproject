@@ -17,27 +17,32 @@
       <h1>xxx后台管理系统</h1>
       <div class="form-group">
         <label for="exampleInputName2">用户&emsp;名：</label>
-        <input type="text" name="username" class="form-control" id="exampleInputName2" placeholder="请输入用户名">
+        <input type="text" name="username" class="form-control" id="exampleInputName2" placeholder="请输入用户名"
+          autocomplete="off">
+        <div class="usertishi" style="display: none;position: absolute;">5-20位，由字母数字组成，字母开头</div>
+        <div class="usertishi1" style="display: none;position: absolute;">5-20位，由字母数字组成，字母开头</div>
       </div>
       <br><br>
       <div class="form-group">
         <label for="exampleInputpwd">密&emsp;&emsp;码：</label>
-        <input type="password" name="password" class="form-control" id="exampleInputpwd" placeholder="请输入密码">
+        <input type="password" name="password" class="form-control" id="exampleInputpwd" placeholder="请输入密码"
+          autocomplete="off">
+        <div class="checkpwd" style="display: none;position: absolute">6-16个字符，可使用字母数字或符号的组合</div>
+        <div class="checkpwd1" style="display: none;position: absolute">6-16个字符，可使用字母数字或符号的组合</div>
       </div>
       <br><br>
-      <!-- <div class="form-group">
-        <label for="exampleInputpwd1">确认密码：</label>
-        <input type="password" name="" class="form-control" id="exampleInputpwd1" placeholder="请确认密码">
-      </div>
-      <br><br> -->
       <div class="form-group">
         <label for="exampleInputname1">昵&emsp;&emsp;称：</label>
-        <input type="text" name="nickname" class="form-control" id="exampleInputname1" placeholder="请输入昵称">
+        <input type="text" name="nickname" class="form-control" id="exampleInputname1" placeholder="请输入昵称" autocomplete="off">
+        <div class="nicktishi" style="display: none;position: absolute;">请输入中文昵称2-10位</div>
+        <div class="nicktishi1" style="display: none;position: absolute;">请输入中文昵称2-10位</div>
       </div>
       <br><br>
       <div class="form-group">
         <label for="exampleInputage">年&emsp;&emsp;龄：</label>
-        <input type="text" name="age" class="form-control" id="exampleInputage" placeholder="请输入年龄">
+        <input type="text" name="age" class="form-control" id="exampleInputage" placeholder="请输入年龄" autocomplete="off">
+        <div class="agetishi" style="display: none;position: absolute;">请输入有效年龄</div>
+        <div class="agetishi1" style="display: none;position: absolute;">请输入有效年龄</div>
       </div>
       <br><br>
       <div class="form-group">
@@ -52,7 +57,9 @@
       <br><br>
       <div class="form-group">
         <label for="exampleInputphone">手机号码：</label>
-        <input type="tel" name="phone" class="form-control" id="exampleInputphone" placeholder="请输入手机号码">
+        <input type="tel" name="phone" class="form-control" id="exampleInputphone" placeholder="请输入手机号码" autocomplete="off">
+        <div class="phonetishi" style="display: none;position: absolute;">请填写真实的手机号，并进行验证</div>
+        <div class="phonetishi1" style="display: none;position: absolute;">请填写真实的手机号，并进行验证</div>
       </div>
       <br><br>
       <label class="manager">管理&emsp;员：</label>
@@ -70,3 +77,125 @@
 </body>
 
 </html>
+<script src="/jq/jquery.min.js"></script>
+<script>
+  $(function () {
+    //用户名判断
+    $("#exampleInputName2").focus(function () {
+      $(".usertishi1").show();
+      $(".usertishi").hide();
+    })
+    $("#exampleInputName2").blur(function () {
+      $(".usertishi1").hide();
+      var userreg = /^[a-zA-Z]([a-zA-Z0-9]{4,19})$/;
+      var usernameval = $(this).val();
+      if (usernameval == "") {
+        $(".usertishi").show().html("用户名不能为空");
+        return;
+      } else {
+        if (userreg.test(usernameval)) {
+          $(".usertishi").show().html("用户名可用");
+        } else {
+          $(".usertishi").show().html("用户名不符合要求");
+        }
+      }
+    })
+    //密码判断
+    $("#exampleInputpwd").focus(function () {
+      $(".checkpwd1").show();
+      $(".checkpwd").hide();
+    })
+    $("#exampleInputpwd").blur(function () {
+      $(".checkpwd1").hide();
+      var pwdreg = /^.{6,16}$/;
+      var pwdval = $(this).val();
+      if (pwdval == "") {
+        $(".checkpwd").show().html("密码不能为空");
+        return;
+      } else {
+        if (pwdreg.test(pwdval)) {
+          $(".checkpwd").show().html("密码可用");
+        } else {
+          $(".checkpwd").show().html("密码不符合要求");
+        }
+      }
+    })
+    //昵称判断
+    $("#exampleInputname1").focus(function () {
+      $(".nicktishi1").show();
+      $(".nicktishi").hide();
+    })
+    $("#exampleInputname1").blur(function () {
+      $(".nicktishi1").hide();
+      var nickreg = /^[\u4e00-\u9fa5]{2,10}$/;
+      var nickval = $(this).val();
+      if (nickval == "") {
+        $(".nicktishi").show().html("昵称不能为空");
+        return;
+      } else if (nickval == "管理员") {
+        $("#inlineRadio1").prop("checked", true);
+        $(".nicktishi").show().html("此昵称只能管理员用");
+      } else {
+        if (nickreg.test(nickval)) {
+          $(".nicktishi").show().html("昵称可用");
+        } else {
+          $(".nicktishi").show().html("昵称不符合要求");
+        }
+      }
+    })
+   //年龄判断
+    $("#exampleInputage").focus(function () {
+      $(".agetishi1").show();
+      $(".agetishi").hide();
+    })
+    $("#exampleInputage").blur(function () {
+      $(".agetishi1").hide();
+      var agereg = /^(1[8-9]|[2-5]\d|6[0-5])$/;
+      var ageval = $(this).val();
+      if (ageval == "") {
+        $(".agetishi").show().html("年龄不能为空");
+        return;
+      } else {
+        if (agereg.test(ageval)) {
+          $(".agetishi").show().html("年龄可用");
+        } else {
+          $(".agetishi").show().html("年龄不符合要求");
+        }
+      }
+    })
+    //电话判断
+    $("#exampleInputphone").focus(function () {
+      $(".phonetishi1").show();
+      $(".phonetishi").hide();
+    })
+    $("#exampleInputphone").blur(function () {
+      $(".phonetishi1").hide();
+      var phonereg = /^1[3-8]\d{9}$/;
+      var phoneval = $(this).val();
+      if (phoneval == "") {
+        $(".phonetishi").show().html("电话不能为空");
+        return;
+      } else {
+        if (phonereg.test(phoneval)) {
+          $(".phonetishi").show().html("电话可用");
+        } else {
+          $(".phonetishi").show().html("电话不符合要求");
+        }
+      }
+    })
+   //管理员限定
+    $("#inlineRadio1").click(function () {
+      $("#exampleInputname1").val("管理员");
+    })
+    $("#inlineRadio2").click(function () {
+      $("#exampleInputname1").val("");
+    })
+    //提交限定
+    if ($("#exampleInputName2").val() == "" || $("#exampleInputpwd").val() == ""
+      || $("#exampleInputname1").val() == "" || $("#exampleInputage").val() == "" ||
+      $("#exampleInputphone").val() == "") {
+        console.log(1);
+      $(".btn-primary").prop("disabled", true);
+    }
+  })
+</script>

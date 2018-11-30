@@ -143,6 +143,13 @@ router.post("/addbrand",upload.single("brandlogo"),function(req,res){
    //修改品牌
    router.post("/updatebrand",upload.single("brandlogo"),function(req,res){
     var id = req.body._id;
+    if(!id){
+        res.render("error",{
+            message:"id不存在",
+            error:{status:"",stack:""}
+        })
+        return;
+    }
     console.log(id);
     var filename="images/"+new Date().getTime()+"_"+req.file.originalname;
     var newfilename=path.resolve(__dirname,"../public/",filename);
