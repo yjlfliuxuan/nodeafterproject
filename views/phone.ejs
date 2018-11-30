@@ -88,17 +88,17 @@
               <th scope="row">
                 <%= i+1 %>
               </th>
-              <td><img src="/<%= list[i].pic%>" width="150"></td>
-              <td>
+              <td><img class="imgjq" src="/<%= list[i].pic%>" width="150"></td>
+              <td class="phonenamejq">
                 <%= list[i].phonename%>
               </td>
-              <td>
+              <td class="brandjq">
                 <%= list[i].brand%>
               </td>
-              <td>
+              <td class="officaljq">
                 <%= list[i].Officialprice%>
               </td>
-              <td>
+              <td class="recyclingjq">
                 <%= list[i].recyclingprice%>
               </td>
               <td><a href="javascript:void(0)" class="blue">修改</a><a href="/phone/delete?id=<%=list[i]._id%>" class="red">删除</a></td>
@@ -111,12 +111,12 @@
             <h1>修改手机</h1>
             <div class="form-group">
               <label for="phonename">手机名称：</label>
-              <input type="text" class="form-control" name="phonename" id="phonename" placeholder="请输入手机名称">
+              <input type="text" class="form-control" name="phonename" id="phonename2" placeholder="请输入手机名称">
             </div>
             <br>
             <div class="form-group">
               <label>手机品牌:</label>
-              <select class="phonebrand" name="brand">
+              <select class="phonebrand" name="brand" id="phonebrand">
                 <option value="苹果">苹果</option>
                 <option value="小米">小米</option>
                 <option value="三星">三星</option>
@@ -129,18 +129,18 @@
             <br>
             <div class="form-group">
               <label for="Officialprice">官方指导价</label>
-              <input type="text" class="form-control" name="Officialprice" id="Officialprice" placeholder="请输入指导价">
+              <input type="text" class="form-control" name="Officialprice" id="Officialprice2" placeholder="请输入指导价">
             </div>
             <br>
             <div class="form-group">
               <label for="recyclingprice">二手回收价</label>
-              <input type="text" class="form-control" name="recyclingprice" id="recyclingprice" placeholder="请输入回收价">
+              <input type="text" class="form-control" name="recyclingprice" id="recyclingprice2" placeholder="请输入回收价">
             </div>
             <br>
             <div class="form-group">
               <label>手机图片：<label>
                   <br>
-                  <input type="file" name="pic" id="file">
+                  <input type="file" name="pic" id="file2">
             </div>
             &emsp;&emsp;&emsp;&emsp;<button type="submit" class="btn btn-default">确认</button>
             &emsp;&emsp;&emsp;&emsp;<button type="button" class="btn  cancel1 btn-default">取消</button>
@@ -164,6 +164,7 @@
               </a>
             </li>
           </ul>
+        </nav>
       </div>
     </div>
     <%-include("./public/foot.ejs")%>
@@ -186,6 +187,11 @@
     })
     $(".blue").click(function () {
       $(".update_p").show();
+      $("#phonename2").val($(this).parents("tr").find(".phonenamejq").text());
+      $("#phonebrand").children("option:selected").val($(this).parents("tr").find(".brandjq").text());
+      $("#phonebrand").children("option:selected").text($(this).parents("tr").find(".brandjq").text());
+      $("#Officialprice2").val($(this).parents("tr").find(".officaljq").text());
+      $("#recyclingprice2").val($(this).parents("tr").find(".recyclingjq").text());
     })
   })
 </script>
