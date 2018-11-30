@@ -95,6 +95,7 @@
       } else {
         if (userreg.test(usernameval)) {
           $(".usertishi").show().html("用户名可用");
+          $(".btn-primary").prop("disabled", false);
         } else {
           $(".usertishi").show().html("用户名不符合要求");
         }
@@ -115,6 +116,7 @@
       } else {
         if (pwdreg.test(pwdval)) {
           $(".checkpwd").show().html("密码可用");
+          $(".btn-primary").prop("disabled", false);
         } else {
           $(".checkpwd").show().html("密码不符合要求");
         }
@@ -135,15 +137,17 @@
       } else if (nickval == "管理员") {
         $("#inlineRadio1").prop("checked", true);
         $(".nicktishi").show().html("此昵称只能管理员用");
+        $(".btn-primary").prop("disabled", false);
       } else {
         if (nickreg.test(nickval)) {
           $(".nicktishi").show().html("昵称可用");
+          $(".btn-primary").prop("disabled", false);
         } else {
           $(".nicktishi").show().html("昵称不符合要求");
         }
       }
     })
-   //年龄判断
+    //年龄判断
     $("#exampleInputage").focus(function () {
       $(".agetishi1").show();
       $(".agetishi").hide();
@@ -158,6 +162,7 @@
       } else {
         if (agereg.test(ageval)) {
           $(".agetishi").show().html("年龄可用");
+          $(".btn-primary").prop("disabled", false);
         } else {
           $(".agetishi").show().html("年龄不符合要求");
         }
@@ -178,12 +183,13 @@
       } else {
         if (phonereg.test(phoneval)) {
           $(".phonetishi").show().html("电话可用");
+          $(".btn-primary").prop("disabled", false);
         } else {
           $(".phonetishi").show().html("电话不符合要求");
         }
       }
     })
-   //管理员限定
+    //管理员限定
     $("#inlineRadio1").click(function () {
       $("#exampleInputname1").val("管理员");
     })
@@ -191,11 +197,15 @@
       $("#exampleInputname1").val("");
     })
     //提交限定
-    if ($("#exampleInputName2").val() == "" || $("#exampleInputpwd").val() == ""
-      || $("#exampleInputname1").val() == "" || $("#exampleInputage").val() == "" ||
-      $("#exampleInputphone").val() == "") {
+    $(".btn-primary").click(function () {
+      if ($("#exampleInputName2").val() == "" || $("#exampleInputpwd").val() == ""
+        || $("#exampleInputname1").val() == "" || $("#exampleInputage").val() == "" ||
+        $("#exampleInputphone").val() == "") {
         console.log(1);
-      $(".btn-primary").prop("disabled", true);
-    }
+        $(".btn-primary").prop("disabled", true);
+      } else {
+        $(".btn-primary").prop("disabled", false);
+      }
+    })
   })
 </script>

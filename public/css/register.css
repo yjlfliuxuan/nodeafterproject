@@ -1,20 +1,24 @@
-.form-inline {
+body {
+  background: url("/images/registerbg.jpg");
+  background-size: cover;
+}
+body .form-inline {
   width: 360px;
-  margin: 100px auto;
+  margin: 150px 0 0 0;
   border: 1px solid black;
 }
-.form-inline .form-group {
+body .form-inline .form-group {
   margin-left: 45px;
 }
-.form-inline .manager {
+body .form-inline .manager {
   margin-left: 45px;
 }
-.form-inline h1 {
+body .form-inline h1 {
   font-size: 30px;
   text-align: center;
   margin-bottom: 10px;
 }
-.form-inline .button {
+body .form-inline .button {
   width: 100px;
   height: 30px;
   border: 1px solid black;

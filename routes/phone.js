@@ -132,7 +132,7 @@ router.post("/addPhone",upload.single("pic"),function(req,res){
                         error:err
                     })
                 }else{
-                    res.send("新增手机成功");
+                    res.redirect("/phone");//重定向可以刷新页面
                 } 
                 client.close();
             })
@@ -186,7 +186,7 @@ router.post("/updatePhone",upload.single("pic"),function(req,res){
                         error:err
                     })
                 }else{
-                    res.send("修改手机数据成功");
+                    res.redirect("/phone");
                 } 
                 client.close();
             })

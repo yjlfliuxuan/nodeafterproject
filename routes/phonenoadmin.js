@@ -130,7 +130,7 @@ router.post("/addPhone",upload.single("pic"),function(req,res){
                         error:err
                     })
                 }else{
-                    res.send("新增手机成功");
+                    res.redirect("/phonenoadmin");
                 } 
                 client.close();
             })
@@ -182,7 +182,7 @@ router.post("/updatePhone",upload.single("pic"),function(req,res){
                         error:err
                     })
                 }else{
-                    res.send("修改手机数据成功");
+                    res.redirect("/phonenoadmin");
                 } 
                 client.close();
             })

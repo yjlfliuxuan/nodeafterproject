@@ -17,13 +17,15 @@
         <div class="borderboxwei">
             <label for="inputEmail3" class="">用户名:</label>
             <div class="textbox">
-                <input type="text" class="" name="username" id="inputEmail3" placeholder="请输入用户名">
+                <input type="text" class="" name="username" id="inputEmail3" placeholder="请输入用户名" autocomplete="off">
+                <div class="usertishi" style="display: none;position: absolute;">用户名不能为空</div>
             </div>
         </div>
         <div class="borderboxwei">
             <label for="inputPassword3" class="">密&emsp;码:</label>
             <div class="textbox">
-                <input type="password" class="" name="password" id="inputPassword3" placeholder="请输入密码">
+                <input type="password" class="" name="password" id="inputPassword3" placeholder="请输入密码" autocomplete="off">
+                <div class="checkpwd" style="display: none;position: absolute">密码不能为空</div>
             </div>
         </div>
         <div class="borderboxwei">
@@ -36,3 +38,36 @@
 </body>
 
 </html>
+<script src="/jq/jquery.min.js"></script>
+<script>
+    $("#inputEmail3").focus(function () {
+        $(".usertishi").show().html("请正确输入你的用户名");
+    })
+    $("#inputPassword3").focus(function () {
+        $(".checkpwd").show().html("请正确输入你的密码");
+    })
+    $("#inputEmail3").blur(function () {
+        if ($(this).val() == "") {
+            $(".usertishi").show().html("用户名不能为空");
+        } else {
+            $(".usertishi").hide();
+            $(".btn-primary").prop("disabled", false);
+        }
+    })
+    $("#inputPassword3").blur(function () {
+        if ($(this).val() == "") {
+            $(".checkpwd").show().html("密码不能为空");
+        } else {
+            $(".checkpwd").hide();
+            $(".btn-primary").prop("disabled", false);
+        }
+    })
+    $(".btn-primary").click(function () {
+        if ($("#inputPassword3").val() == "" || $("#inputEmail3").val() == "") {
+            $(".btn-primary").prop("disabled", true);
+        } else {
+            $(".btn-primary").prop("disabled", false);
+        }
+    })
+
+</script>

@@ -1,36 +1,41 @@
-.borderbox {
+body {
+  background: url("/images/loginbg.jpg") no-repeat;
+  background-size: cover;
+}
+body .borderbox {
   width: 360px;
-  height: 200px;
-  margin: 160px auto;
+  height: 240px;
+  margin: 200px 0 0 950px;
   border: 1px solid black;
 }
-.borderbox h1 {
+body .borderbox h1 {
+  margin-top: 30px;
   font-size: 30px;
   text-align: center;
 }
-.borderbox .borderboxwei {
+body .borderbox .borderboxwei {
   width: 255px;
   height: 30px;
   display: flex;
   justify-content: space-between;
   margin: 20px auto;
 }
-.borderbox .borderboxwei label {
+body .borderbox .borderboxwei label {
   font-size: 16px;
   line-height: 30px;
 }
-.borderbox .borderboxwei .textbox {
+body .borderbox .borderboxwei .textbox {
   width: 200px;
   overflow: hidden;
 }
-.borderbox .borderboxwei .textbox input {
+body .borderbox .borderboxwei .textbox input {
   width: 200px;
   height: 30px;
 }
-.borderbox .borderboxwei .subbox {
+body .borderbox .borderboxwei .subbox {
   width: 255px;
 }
-.borderbox .borderboxwei .subbox .button {
+body .borderbox .borderboxwei .subbox .button {
   width: 100px;
   height: 30px;
   border: 1px solid black;

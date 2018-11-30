@@ -127,7 +127,7 @@ router.post("/addbrand", upload.single("brandlogo"), function (req, res) {
                             error: err
                         })
                     } else {
-                        res.send("新增品牌成功");
+                        res.redirect("/brand");
                     }
                     client.close();
                 })
@@ -177,7 +177,7 @@ router.post("/updatebrand", upload.single("brandlogo"), function (req, res) {
                             error: err
                         })
                     } else {
-                        res.send("修改品牌成功");
+                        res.redirect("/brand");
                     }
                     client.close();
                 })
