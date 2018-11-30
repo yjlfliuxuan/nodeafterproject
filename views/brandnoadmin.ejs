@@ -65,7 +65,7 @@
                         <% for(var i=0;i<list.length;i++){ %>
                         <tr>
                             <th scope="row">
-                                <%= i+1 %>
+                                <%= i+1 %><input class="mongoid" type="hidden" value="<%= list[i]._id%>">
                             </th>
                             <td><img class="imgjq" src="/<%= list[i].brandlogo %>" width="150"></td>
                             <td class="brandjq">
@@ -80,6 +80,7 @@
                 <div class="update_p">
                     <form class="form-inline" action="/brandnoadmin/updatebrand" method="POST" enctype="multipart/form-data">
                         <h1>修改品牌</h1>
+                        <input type="hidden" name="_id" class="acceptmongoid">
                         <div class="form-group">
                             <label for="brandname">手机品牌：</label>
                             <input type="text" class="form-control" name="brandname" id="brandname2" placeholder="请输入手机品牌">
@@ -137,6 +138,7 @@
             $(".update_p").show();
             var text = $(this).parents("tr").find(".brandjq").text();
             $("#brandname2").val(text);
+            $(".acceptmongoid").val($(this).parents("tr").find(".mongoid").val());
         })
     })
 </script>

@@ -146,6 +146,15 @@ router.post("/addPhone",upload.single("pic"),function(req,res){
 //修改手机
 router.post("/updatePhone",upload.single("pic"),function(req,res){
     var id = req.body._id;
+    if(!id){
+        res.render("error",{
+            message:"id不存在",
+            error:{status:"",stack:""}
+        })
+        return;
+    }
+    console.log(id);
+    var id = req.body._id;
     var filename="images/"+new Date().getTime()+"_"+req.file.originalname;
     var newfilename=path.resolve(__dirname,"../public/",filename);
    try {

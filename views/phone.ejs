@@ -86,7 +86,7 @@
             <% for(var i=0;i<list.length;i++){ %>
             <tr>
               <th scope="row">
-                <%= i+1 %>
+                <%= i+1 %><input class="mongoid" type="hidden" value="<%= list[i]._id%>">
               </th>
               <td><img class="imgjq" src="/<%= list[i].pic%>" width="150"></td>
               <td class="phonenamejq">
@@ -109,6 +109,7 @@
         <div class="update_p">
           <form class="form-inline" action="/phone/updatePhone" method="POST" enctype="multipart/form-data">
             <h1>修改手机</h1>
+            <input type="hidden" name="_id" class="acceptmongoid">
             <div class="form-group">
               <label for="phonename">手机名称：</label>
               <input type="text" class="form-control" name="phonename" id="phonename2" placeholder="请输入手机名称">
@@ -117,6 +118,7 @@
             <div class="form-group">
               <label>手机品牌:</label>
               <select class="phonebrand" name="brand" id="phonebrand">
+                <option value="--">--</option>
                 <option value="苹果">苹果</option>
                 <option value="小米">小米</option>
                 <option value="三星">三星</option>
@@ -192,6 +194,7 @@
       $("#phonebrand").children("option:selected").text($(this).parents("tr").find(".brandjq").text());
       $("#Officialprice2").val($(this).parents("tr").find(".officaljq").text());
       $("#recyclingprice2").val($(this).parents("tr").find(".recyclingjq").text());
+      $(".acceptmongoid").val($(this).parents("tr").find(".mongoid").val());
     })
   })
 </script>
