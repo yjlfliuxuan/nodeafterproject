@@ -38,12 +38,7 @@
 .main-right table tbody tr td .red {
   color: red;
   text-decoration: none;
-  text-align: right;
-}
-.main-right table tbody tr td .blue {
-  color: skyblue;
-  text-decoration: none;
-  text-align: left;
+  text-align: center;
 }
 .main-right table tbody tr th {
   text-align: center;

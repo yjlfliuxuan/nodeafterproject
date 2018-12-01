@@ -138,6 +138,10 @@
         $("#inlineRadio1").prop("checked", true);
         $(".nicktishi").show().html("此昵称只能管理员用");
         $(".btn-primary").prop("disabled", false);
+      }else if(nickval != "管理员"){
+        $("#inlineRadio2").prop("checked", true);
+        $("#inlineRadio1").prop("checked", false);
+        $(".btn-primary").prop("disabled", false);
       } else {
         if (nickreg.test(nickval)) {
           $(".nicktishi").show().html("昵称可用");
